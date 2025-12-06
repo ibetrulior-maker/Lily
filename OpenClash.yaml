@@ -126,25 +126,25 @@ proxy-groups:
   - 美国
 
 - name: 香港
-  type: select
+  type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)港|hk|hongkong|hong kong"
 
 - name: 日本
-  type: select
+  type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)日|jp|japan"
 
 - name: 美国
-  type: select
+  type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)美|us|unitedstates|united states"
 
 - name: 新加坡
-  type: select
+  type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)(新|sg|singapore)"
