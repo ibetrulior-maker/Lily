@@ -1,0 +1,160 @@
+proxy-providers:
+  Corn Group:
+    url: https://www.corninhi.com/s/84tn4684vat2
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    override:
+      additional-prefix: "[Corn Group]"
+    path: "./proxy_provider/Corn Group"
+  
+  微斯人，吾谁与归:
+    url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=MTQwNDA6NjNjMmRlMzU5N2NmMGIzN2UwYWZiYjMzZWQyY2Y5ODE0NGQxYjVkYw
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    override:
+      additional-prefix: "[微斯人，吾谁与归]"
+    path: "./proxy_provider/微斯人，吾谁与归"
+
+proxies:
+- name: 直连
+  type: direct
+  udp: true
+
+port: 7890
+socks-port: 7891
+mixed-port: 7892
+redir-port: 7893
+tproxy-port: 7895
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090
+ipv6: false
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+geodata-mode: false
+geodata-loader: standard
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/lite/Country.mmdb
+  asn: https://testingcf.jsdelivr.net/gh/xishang0128/geoip@release/GeoLite2-ASN.mmdb
+find-process-mode: strict
+global-client-fingerprint: chrome
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports:
+      - 80
+      - 8080-8880
+      override-destination: true
+    TLS:
+      ports:
+      - 443
+      - 8443
+    QUIC:
+      ports:
+      - 443
+      - 8443
+  skip-domain:
+  - Mijia Cloud
+  - "+.push.apple.com"
+
+tun:
+  enable: true
+  stack: mixed
+  device: utun
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+dns:
+  enable: true
+  prefer-h3: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  listen: 0.0.0.0:1053
+  fake-ip-filter:
+  - "*"
+  - "+.lan"
+  - "+.local"
+  - "+.market.xiaomi.com"
+  default-nameserver:
+  - tls://223.5.5.5
+  - tls://223.6.6.6
+  nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+
+proxy-groups:
+- name: NETFLIX
+  type: select
+  proxies:
+  - 新加坡
+  - 香港
+  - 日本
+  - 美国
+
+- name: 全球手动选择
+  type: select
+  proxies:
+  - 香港
+  - 日本
+  - 新加坡
+  - 美国
+
+- name: 香港
+  type: select
+  include-all: true
+  exclude-type: direct
+  filter: "(?i)港|hk|hongkong|hong kong"
+
+- name: 日本
+  type: select
+  include-all: true
+  exclude-type: direct
+  filter: "(?i)日|jp|japan"
+
+- name: 美国
+  type: select
+  include-all: true
+  exclude-type: direct
+  filter: "(?i)美|us|unitedstates|united states"
+
+- name: 新加坡
+  type: select
+  include-all: true
+  exclude-type: direct
+  filter: "(?i)(新|sg|singapore)"
+
+rules:
+- GEOIP,lan,直连,no-resolve
+- GEOSITE,netflix,NETFLIX
+- GEOSITE,CN,直连
+- GEOSITE,geolocation-!cn,全球手动选择
+
+- GEOIP,netflix,NETFLIX
+- GEOIP,CN,直连
+- MATCH,全球手动选择
