@@ -110,6 +110,7 @@ sniffer:
 proxy-groups:
 - name: NETFLIX
   type: select
+  icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
   proxies:
   - 新加坡
   - 香港
@@ -118,6 +119,7 @@ proxy-groups:
 
 - name: 全球手动选择
   type: select
+  icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
   proxies:
   - 香港
   - 日本
@@ -129,24 +131,28 @@ proxy-groups:
   include-all: true
   exclude-type: direct
   filter: "(?i)港|hk|hong kong"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 
 - name: 日本
   type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)日|jp|japan"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
 
 - name: 美国
   type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)美|us|united states"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
 - name: 新加坡
   type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)(新|sg|singapore)"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
 # [本地规则]
 rules:
