@@ -108,15 +108,6 @@ sniffer:
 
 # [策略组]
 proxy-groups:
-- name: NETFLIX
-  type: select
-  icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
-  proxies:
-  - 新加坡
-  - 香港
-  - 日本
-  - 美国
-
 - name: 全球手动选择
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
@@ -124,6 +115,15 @@ proxy-groups:
   - 香港
   - 日本
   - 新加坡
+  - 美国
+
+- name: NETFLIX
+  type: select
+  icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
+  proxies:
+  - 新加坡
+  - 香港
+  - 日本
   - 美国
 
 - name: 香港
