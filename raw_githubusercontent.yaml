@@ -1,4 +1,4 @@
----
+# [订阅节点]
 proxy-providers:
   Corn Group:
     url: https://www.corninhi.com/s/84tn4684vat2
@@ -11,6 +11,7 @@ proxy-providers:
     override:
       additional-prefix: "[Corn Group]"
     path: "./proxy_provider/Corn Group"
+
   微斯人，吾谁与归:
     url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=MTQwNDA6NjNjMmRlMzU5N2NmMGIzN2UwYWZiYjMzZWQyY2Y5ODE0NGQxYjVkYw
     type: http
@@ -22,11 +23,15 @@ proxy-providers:
     override:
       additional-prefix: "[微斯人，吾谁与归]"
     path: "./proxy_provider/微斯人，吾谁与归"
+
+# [端口设置]
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
+
+# [通用设置]
 external-controller: 0.0.0.0:9090
 geodata-loader: standard
 unified-delay: true
@@ -37,6 +42,8 @@ log-level: info
 tcp-concurrent: true
 find-process-mode: strict
 global-client-fingerprint: chrome
+
+# [GEO设置]
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -45,6 +52,8 @@ geox-url:
   geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
   mmdb: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb
   asn: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb
+
+# [DNS设置]
 dns:
   enable: true
   ipv6: false
@@ -61,6 +70,8 @@ dns:
   - "+.local"
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
+
+# [TUN设置]
 tun:
   enable: true
   stack: mixed
@@ -72,9 +83,13 @@ tun:
   auto-detect-interface: false
   auto-redirect: false
   strict-route: false
+
+# [缓存设置]
 profile:
   store-selected: true
   store-fake-ip: true
+
+# [嗅探设置]
 sniffer:
   enable: true
   force-dns-mapping: true
@@ -94,6 +109,8 @@ sniffer:
       ports:
       - 443
       - 8443
+
+# [策略组]
 proxy-groups:
 - name: NETFLIX
   type: select
@@ -129,6 +146,8 @@ proxy-groups:
   include-all: true
   exclude-type: direct
   filter: "(?i)(新|sg|singapore)"
+
+# [本地规则]
 rules:
 - GEOIP,lan,DIRECT,no-resolve
 - GEOSITE,netflix,NETFLIX
@@ -137,11 +156,3 @@ rules:
 - GEOIP,netflix,NETFLIX
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
-secret: BIolO2iy
-bind-address: "*"
-external-ui: "/usr/share/openclash/ui"
-external-ui-name: metacubexd
-keep-alive-interval: 15
-keep-alive-idle: 600
-authentication:
-- Clash:Ua8EX1Ah
