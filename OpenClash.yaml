@@ -156,11 +156,11 @@ proxy-groups:
 
 # [本地规则]
 rules:
-- GEOIP,lan,DIRECT,no-resolve
 - GEOSITE,netflix,NETFLIX
 - GEOSITE,CN,DIRECT
 - GEOSITE,geolocation-!cn,全球手动选择
 
 - GEOIP,netflix,NETFLIX
+- GEOIP,lan,DIRECT,no-resolve
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
