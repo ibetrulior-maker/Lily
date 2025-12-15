@@ -80,16 +80,29 @@ sniffer:
 
 # [订阅节点]
 proxy-providers:
-  subscribe:
+  Corn Group:
+    url: https://www.corninhi.com/s/84tn4684vat2
     type: http
-    url: "https://your-service-provider"
-    path: ./Server/subscribe.yaml
     interval: 86400
     health-check:
       enable: true
-      url: https://cp.cloudflare.com/generate_204
-      interval: 1800
-      timeout: 5000
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    override:
+      additional-prefix: "[Corn Group]"
+    path: "./proxy_provider/Corn Group"
+
+  微斯人，吾谁与归:
+    url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=ef8d92d1a6cbfeacec50ab80a85a7843
+    type: http
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    override:
+      additional-prefix: "[微斯人，吾谁与归]"
+    path: "./proxy_provider/微斯人，吾谁与归"
 
 # [策略组]
 proxy-groups:
