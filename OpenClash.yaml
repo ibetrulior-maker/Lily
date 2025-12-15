@@ -109,6 +109,7 @@ sniffer:
     skip-domain:
       - "Mijia Cloud"
       - "+.push.apple.com"
+
 # [策略组]
 proxy-groups:
 - name: 全球手动选择
