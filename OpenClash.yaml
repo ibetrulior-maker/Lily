@@ -166,6 +166,7 @@ proxy-groups:
 # [本地规则]
 rules:
 - DOMAIN,hxd.as174.de,Emby
+- DOMAIN,emby.as174.de,Emby
 - DOMAIN,ask.ash.yt,Emby
 - DOMAIN,tv.ash.yt,Emby
 
