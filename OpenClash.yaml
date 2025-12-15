@@ -174,7 +174,6 @@ rules:
 - GEOSITE,CN,DIRECT
 - GEOSITE,geolocation-!cn,全球手动选择
 
-- RULE-SET,Emby,Emby
 - GEOIP,netflix,NETFLIX
 - GEOIP,lan,DIRECT,no-resolve
 - GEOIP,CN,DIRECT
