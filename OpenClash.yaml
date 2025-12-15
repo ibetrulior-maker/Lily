@@ -164,3 +164,13 @@ rules:
 - GEOIP,lan,DIRECT,no-resolve
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
+
+# [远程规则]
+rule-providers:
+  Emby:
+    type: http
+    path: ./Ruleset/Emby.yaml
+    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/Unbreak.yaml
+    behavior: classical
+    interval: 86400
+    format: yaml
