@@ -1,7 +1,3 @@
-# 配置名称: Clash 配置
-# 配置作者: Centralmatrix3
-# 更新时间: 25-12-05 00:00
-
 # [端口设置]
 port: 7890
 socks-port: 7891
@@ -14,7 +10,7 @@ external-controller: 0.0.0.0:9090
 geodata-loader: standard
 unified-delay: true
 allow-lan: true
-ipv6: true
+ipv6: false
 mode: rule
 log-level: info
 tcp-concurrent: true
@@ -112,8 +108,8 @@ proxy-groups:
     proxies:
       - 香港节点
       - 日本节点
-      - 新加坡节点
       - 美国节点
+      - 新加坡节点
 
   - name: "香港节点"
     type: url-test
@@ -135,22 +131,22 @@ proxy-groups:
     interval: 1800
     lazy: true
 
-  - name: "新加坡节点"
-    type: url-test
-    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/SG.png
-    url: "https://cp.cloudflare.com/generate_204"
-    include-all: true
-    filter: "新加坡|狮|SG|🇸🇬|(?i)Singapore"
-    tolerance: 50
-    interval: 1800
-    lazy: true
-
   - name: "美国节点"
     type: url-test
     icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/US.png
     url: "https://cp.cloudflare.com/generate_204"
     include-all: true
     filter: "美国|美|US|🇺🇸|(?i)States"
+    tolerance: 50
+    interval: 1800
+    lazy: true
+
+  - name: "新加坡节点"
+    type: url-test
+    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/SG.png
+    url: "https://cp.cloudflare.com/generate_204"
+    include-all: true
+    filter: "新加坡|狮|SG|🇸🇬|(?i)Singapore"
     tolerance: 50
     interval: 1800
     lazy: true
