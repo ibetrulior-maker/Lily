@@ -13,7 +13,7 @@ proxy-providers:
     path: "./proxy_provider/Corn Group"
 
   微斯人，吾谁与归:
-    url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=MTQwNDA6NjNjMmRlMzU5N2NmMGIzN2UwYWZiYjMzZWQyY2Y5ODE0NGQxYjVkYw
+    url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=ef8d92d1a6cbfeacec50ab80a85a7843
     type: http
     interval: 86400
     health-check:
@@ -142,6 +142,13 @@ proxy-groups:
   filter: "(?i)港|hk|hong kong"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 
+- name: 新加坡
+  type: url-test
+  include-all: true
+  exclude-type: direct
+  filter: "(?i)(新|sg|singapore)"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
 - name: 日本
   type: url-test
   include-all: true
@@ -155,13 +162,6 @@ proxy-groups:
   exclude-type: direct
   filter: "(?i)美|us|united states"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-
-- name: 新加坡
-  type: url-test
-  include-all: true
-  exclude-type: direct
-  filter: "(?i)(新|sg|singapore)"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
 # [本地规则]
 rules:
