@@ -117,6 +117,15 @@ proxy-groups:
   - 新加坡
   - 美国
 
+- name: Emby
+  type: select
+  icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
+  proxies:
+  - 香港
+  - 新加坡
+  - 日本
+  - 美国
+
 - name: NETFLIX
   type: select
   icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
@@ -160,6 +169,7 @@ rules:
 - GEOSITE,CN,DIRECT
 - GEOSITE,geolocation-!cn,全球手动选择
 
+- RULE-SET,Emby,Emby
 - GEOIP,netflix,NETFLIX
 - GEOIP,lan,DIRECT,no-resolve
 - GEOIP,CN,DIRECT
@@ -168,9 +178,9 @@ rules:
 # [远程规则]
 rule-providers:
   Emby:
-    type: http
-    path: ./Ruleset/Emby.yaml
-    url: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Clash/Ruleset/Unbreak.yaml
-    behavior: classical
-    interval: 86400
-    format: yaml
+  type: http
+  path: ./Ruleset/Emby.yaml
+  url: https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml?token=GHSAT0AAAAAADRJJVE3FKZUMIVCQJEMXHKC2J7URSQ
+  behavior: classical
+  interval: 86400
+  format: yaml
