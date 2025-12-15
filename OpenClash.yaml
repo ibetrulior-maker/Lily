@@ -24,6 +24,11 @@ proxy-providers:
       additional-prefix: "[微斯人，吾谁与归]"
     path: "./proxy_provider/微斯人，吾谁与归"
 
+proxies: 
+  - name: "直连"
+    type: direct
+    udp: true
+
 # [端口设置]
 port: 7890
 socks-port: 7891
@@ -130,28 +135,12 @@ proxy-groups:
   - 日本
   - 美国
 
-- name: NETFLIX
-  type: select
-  icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
-  proxies:
-  - 新加坡
-  - 香港
-  - 日本
-  - 美国
-
 - name: 香港
   type: url-test
   include-all: true
   exclude-type: direct
   filter: "(?i)港|hk|hong kong"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-
-- name: 新加坡
-  type: url-test
-  include-all: true
-  exclude-type: direct
-  filter: "(?i)(新|sg|singapore)"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
 - name: 日本
   type: url-test
@@ -167,12 +156,19 @@ proxy-groups:
   filter: "(?i)美|us|united states"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
+- name: 新加坡
+  type: url-test
+  include-all: true
+  exclude-type: direct
+  filter: "(?i)(新|sg|singapore)"
+  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
 # [本地规则]
 rules:
-- DOMAIN,hxd.as174.de,Emby
-- DOMAIN,emby.as174.de,Emby
-- DOMAIN,ask.ash.yt,Emby
-- DOMAIN,tv.ash.yt,Emby
+  - DOMAIN,hxd.as174.de,Emby
+  - DOMAIN,emby.as174.de,Emby
+  - DOMAIN,ask.ash.yt,Emby
+  - DOMAIN,tv.ash.yt,Emby
 
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,cn_domain,直连
