@@ -68,6 +68,7 @@ dns:
   fake-ip-filter:
   - "*.lan"
   - "+.local"
+  - "+.market.xiaomi.com"
   fake-ip-range: 198.18.0.1/16
   enhanced-mode: fake-ip
 
@@ -105,7 +106,9 @@ sniffer:
       ports:
       - 443
       - 8443
-
+    skip-domain:
+      - "Mijia Cloud"
+      - "+.push.apple.com"
 # [策略组]
 proxy-groups:
 - name: 全球手动选择
