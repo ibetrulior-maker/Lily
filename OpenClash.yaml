@@ -165,6 +165,10 @@ proxy-groups:
 
 # [本地规则]
 rules:
+- DOMAIN,hxd.as174.de,Emby
+- DOMAIN,ask.ash.yt,Emby
+- DOMAIN,tv.ash.yt,Emby
+
 - GEOSITE,netflix,NETFLIX
 - GEOSITE,CN,DIRECT
 - GEOSITE,geolocation-!cn,全球手动选择
@@ -174,13 +178,3 @@ rules:
 - GEOIP,lan,DIRECT,no-resolve
 - GEOIP,CN,DIRECT
 - MATCH,全球手动选择
-
-# [远程规则]
-rule-providers:
-  Emby:
-  type: http
-  path: ./Ruleset/Emby.yaml
-  url: https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml
-  behavior: classical
-  interval: 86400
-  format: yaml
