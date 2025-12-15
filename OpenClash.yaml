@@ -180,7 +180,7 @@ rule-providers:
   Emby:
   type: http
   path: ./Ruleset/Emby.yaml
-  url: https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml?token=GHSAT0AAAAAADRJJVE3FKZUMIVCQJEMXHKC2J7URSQ
+  url: https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml
   behavior: classical
   interval: 86400
   format: yaml
