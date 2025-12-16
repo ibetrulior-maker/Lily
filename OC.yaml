@@ -111,7 +111,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
     proxies: [香港,日本,美国,新加坡]
   
-  - name: NETFLIX
+  - name: Netflix
     type: select
     proxies: [香港,日本,美国,新加坡]
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
@@ -146,17 +146,12 @@ proxy-groups:
 
 # [本地规则]
 rules:
-  - DOMAIN,hxd.as174.de,Emby
-  - DOMAIN,emby.as174.de,Emby
-  - DOMAIN,ask.ash.yt,Emby
-  - DOMAIN,tv.ash.yt,Emby
-  
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,netflix_domain,NETFLIX
   - RULE-SET,cn_domain,直连
   - RULE-SET,geolocation-!cn,全球手动选择
-
-  - RULE-SET,netflix_ip,NETFLIX
+  - RULE-SET,Emby,Emby
+  - RULE-SET,netflix_ip,Netflix
   - RULE-SET,cn_ip,直连
   - MATCH,全球手动选择  
 
@@ -171,6 +166,9 @@ rule-providers:
   cn_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+  Emby:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml"
   netflix_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
