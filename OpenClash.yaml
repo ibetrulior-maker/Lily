@@ -87,7 +87,7 @@ sniffer:
 dns:
   enable: true
   ipv6: false
-  prefer-h3: false
+  prefer-h3: true
   listen: 0.0.0.0:7874
   enhanced-mode: fake-ip
   fake-ip-filter:
