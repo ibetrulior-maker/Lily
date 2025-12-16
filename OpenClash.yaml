@@ -153,28 +153,41 @@ proxy-groups:
     tolerance: 50
     filter: "(?i)新|sg|singapore"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-
+    
 # [远程规则]
 rule-providers:
   Emby:
-    <<: *RuleProviders
     path: './rules/Emby.yaml'
     url: 'https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml'
-
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
+  
   Netflix:
-    <<: *RuleProviders
     path: './rules/Netflix.yaml'
     url: 'https://rule.kelee.one/Clash/Netflix.yaml'
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
 
   Apple:
-    <<: *RuleProviders
     path: './rules/Apple.yaml'
     url: 'https://rule.kelee.one/Clash/Apple.yaml'
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
 
   LAN:
     <<: *RuleProviders
     path: './rules/Lan.yaml'
     url: 'https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml'
+    type: http
+    behavior: classical
+    interval: 3600
+    format: yaml
 
 # [规则指向]
 rules:
