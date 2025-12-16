@@ -1,4 +1,4 @@
----
+# [订阅节点]
 proxy-providers:
   Corn Group:
     url: https://www.corninhi.com/s/84tn4684vat2
@@ -24,12 +24,14 @@ proxy-providers:
       additional-prefix: "[微斯人，吾谁与归]"
     path: "./proxy_provider/微斯人，吾谁与归"
 
+# [端口设置]
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
 
+# [通用设置]
 udp: true
 mode: rule
 ipv6: false
@@ -42,6 +44,7 @@ find-process-mode: strict
 global-client-fingerprint: chrome
 external-controller: 0.0.0.0:9090
 
+# [GEO设置]
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -51,10 +54,12 @@ geox-url:
   mmdb: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb
   asn: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb
 
+# [缓存设置]
 profile:
   store-selected: true
   store-fake-ip: true
 
+# [嗅探设置]
 sniffer:
   enable: true
   force-dns-mapping: true
@@ -78,6 +83,7 @@ sniffer:
   - Mijia Cloud
   - "+.push.apple.com"
 
+# [DNS设置]
 dns:
   enable: true
   ipv6: false
@@ -96,6 +102,7 @@ dns:
   fake-ip-range: 198.18.0.1/16
   listen: 0.0.0.0:7874
 
+# [策略组]
 proxy-groups:
 - name: 全球手动选择
   type: select
@@ -156,6 +163,7 @@ proxy-groups:
   filter: "(?i)新|sg|singapore"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
+# [远程规则]
 rule-providers:
   Emby:
     path: "./rule_provider/Emby.yaml"
@@ -189,6 +197,7 @@ rule-providers:
     interval: 3600
     format: yaml
 
+# [本地规则]
 rules:
 - RULE-SET, Emby, Emby
 - RULE-SET, Netflix, Netflix
