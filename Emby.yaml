@@ -1,5 +1,5 @@
 payload:
-  - DOMAIN-SUFFIX,hxd.as174.de
-  - DOMAIN-SUFFIX,emby.as174.de
-  - DOMAIN-SUFFIX,ask.ash.yt
-  - DOMAIN-SUFFIX,tv.ash.yt
+  - DOMAIN,hxd.as174.de
+  - DOMAIN,emby.as174.de
+  - DOMAIN,ask.ash.yt
+  - DOMAIN,tv.ash.yt
