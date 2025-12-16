@@ -151,26 +151,6 @@ proxy-groups:
 
 # [远程规则]
 rule-providers:
-  LAN:
-    <<: *RuleProviders
-    path: './rules/Lan.yaml'
-    url: 'https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml'
-
-  Direct:
-    <<: *RuleProviders
-    path: './rules/Direct.yaml'
-    url: 'https://kelee.one/Tool/Clash/Rule/Direct.yaml'
-
-  Proxy:
-    <<: *RuleProviders
-    path: './rules/Proxy.yaml'
-    url: 'https://kelee.one/Tool/Clash/Rule/Proxy.yaml'
-
-  ChinaDownloadCDN:
-    <<: *RuleProviders
-    path: './rules/ChinaDownloadCDN.yaml'
-    url: 'https://kelee.one/Tool/Clash/Rule/ChinaDownloadCDN.yaml'
-
   Emby:
     <<: *RuleProviders
     path: './rules/Emby.yaml'
@@ -185,21 +165,17 @@ rule-providers:
     <<: *RuleProviders
     path: './rules/Apple.yaml'
     url: 'https://rule.kelee.one/Clash/Apple.yaml'
-  
-  ESET_China:
+
+  LAN:
     <<: *RuleProviders
-    path: './rules/ESET_China.yaml'
-    url: 'https://kelee.one/Tool/Clash/Rule/ESET_China.yaml'
+    path: './rules/Lan.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml'
 
 # [规则指向]
 rules:
-  - RULE-SET, LAN, DIRECT
-  - RULE-SET, Direct, DIRECT
-  - RULE-SET, Proxy, 全球手动选择
-  - RULE-SET, ChinaDownloadCDN, DIRECT
   - RULE-SET, Emby, Emby
   - RULE-SET, Netflix, Netflix
   - RULE-SET, Apple, DIRECT
-  - RULE-SET, ESET_China, DIRECT
+  - RULE-SET, LAN, DIRECT
   - GEOIP, CN, DIRECT
   - MATCH, 全球手动选择
