@@ -32,16 +32,17 @@ mixed-port: 7893
 tproxy-port: 7894
 
 # [通用设置]
-external-controller: 0.0.0.0:9090
-geodata-loader: standard
-unified-delay: true
-allow-lan: true
-ipv6: true
+udp: true
 mode: rule
+ipv6: true
+allow-lan: true
 log-level: info
+unified-delay: true
 tcp-concurrent: true
+geodata-loader: standard
 find-process-mode: strict
 global-client-fingerprint: chrome
+external-controller: 0.0.0.0:9090
 
 # [GEO设置]
 geodata-mode: false
@@ -104,14 +105,10 @@ dns:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 
-# 策略组参数锚点
-# 锚点 - 时延优选参数 [每 6 秒一次惰性健康检查，容差 20ms，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
+# [策略组参数]
 UrlTest: &UrlTest {type: url-test, interval: 6, tolerance: 20, lazy: true, url: 'http://www.google.com/blank.html', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
-# 锚点 - 故障转移参数 [每 6 秒一次惰性健康检查，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
 FallBack: &FallBack {type: fallback, interval: 6, lazy: true, url: 'http://www.google.com/blank.html', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
-# 锚点 - 负载均衡参数 [每 6 秒一次惰性健康检查，时延超过 2 秒判定为失败，失败 3 次则自动触发健康检查]
 LoadBalance: &LoadBalance {type: load-balance, interval: 6, lazy: true, url: 'http://www.google.com/blank.html', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
-# 锚点 - 规则参数 [每小时更新一次订阅规则，更新规则时使用直连策略]
 RuleProviders: &RuleProviders {type: http, behavior: classical, interval: 3600, format: yaml, proxy: DIRECT}
 
 # [策略组]
@@ -132,28 +129,28 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
   
   - name: 香港
-    type: select
+    type: url-test
     include-all: true
     exclude-type: direct
     filter: "(?i)港|hk|hong kong"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 
   - name: 日本
-    type: select
+    type: url-test
     include-all: true
     exclude-type: direct
     filter: "(?i)日|jp|japan"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
 
   - name: 美国
-    type: select
+    type: url-test
     include-all: true
     exclude-type: direct
     filter: "(?i)美|us|united states"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
   - name: 新加坡
-    type: select
+    type: url-test
     include-all: true
     exclude-type: direct
     filter: "(?i)新|sg|singapore"
