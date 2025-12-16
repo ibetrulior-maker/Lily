@@ -87,6 +87,8 @@ sniffer:
 dns:
   enable: true
   ipv6: false
+  prefer-h3: false
+  listen: 0.0.0.0:7874
   enhanced-mode: fake-ip
   fake-ip-filter:
   - "*"
@@ -100,7 +102,6 @@ dns:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
   fake-ip-range: 198.18.0.1/16
-  listen: 0.0.0.0:7874
 
 # [策略组]
 proxy-groups:
