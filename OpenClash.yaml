@@ -10,8 +10,8 @@ proxy-providers:
       interval: 300
     override:
       additional-prefix: "[Corn Group]"
-      path: "./proxy_provider/Corn Group"
     path: "./proxy_provider/Corn Group"
+
   微斯人，吾谁与归:
     url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=ef8d92d1a6cbfeacec50ab80a85a7843
     type: http
@@ -22,13 +22,14 @@ proxy-providers:
       interval: 300
     override:
       additional-prefix: "[微斯人，吾谁与归]"
-      path: "./proxy_provider/微斯人，吾谁与归"
     path: "./proxy_provider/微斯人，吾谁与归"
+
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
 tproxy-port: 7895
+
 udp: true
 mode: rule
 ipv6: false
@@ -40,6 +41,7 @@ geodata-loader: standard
 find-process-mode: strict
 global-client-fingerprint: chrome
 external-controller: 0.0.0.0:9090
+
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -48,9 +50,11 @@ geox-url:
   geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
   mmdb: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb
   asn: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb
+
 profile:
   store-selected: true
   store-fake-ip: true
+
 sniffer:
   enable: true
   force-dns-mapping: true
@@ -73,6 +77,7 @@ sniffer:
   skip-domain:
   - Mijia Cloud
   - "+.push.apple.com"
+
 dns:
   enable: true
   ipv6: false
@@ -90,6 +95,7 @@ dns:
   - https://dns.alidns.com/dns-query
   fake-ip-range: 198.18.0.1/16
   listen: 0.0.0.0:7874
+
 proxy-groups:
 - name: 全球手动选择
   type: select
@@ -99,6 +105,7 @@ proxy-groups:
   - 日本
   - 美国
   - 新加坡
+
 - name: Emby
   type: select
   icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
@@ -107,6 +114,7 @@ proxy-groups:
   - 日本
   - 美国
   - 新加坡
+
 - name: Netflix
   type: select
   proxies:
@@ -115,6 +123,7 @@ proxy-groups:
   - 美国
   - 新加坡
   icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
+
 - name: 香港
   type: url-test
   include-all: true
@@ -122,6 +131,7 @@ proxy-groups:
   tolerance: 50
   filter: "(?i)港|hk|hong kong"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+
 - name: 日本
   type: url-test
   include-all: true
@@ -129,6 +139,7 @@ proxy-groups:
   tolerance: 50
   filter: "(?i)日|jp|japan"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+
 - name: 美国
   type: url-test
   include-all: true
@@ -136,6 +147,7 @@ proxy-groups:
   tolerance: 50
   filter: "(?i)美|us|united states"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+
 - name: 新加坡
   type: url-test
   include-all: true
@@ -143,6 +155,7 @@ proxy-groups:
   tolerance: 50
   filter: "(?i)新|sg|singapore"
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+
 rule-providers:
   Emby:
     path: "./rule_provider/Emby.yaml"
@@ -151,6 +164,7 @@ rule-providers:
     behavior: classical
     interval: 3600
     format: yaml
+
   Netflix:
     path: "./rule_provider/Netflix.yaml"
     url: https://rule.kelee.one/Clash/Netflix.yaml
@@ -158,6 +172,7 @@ rule-providers:
     behavior: classical
     interval: 3600
     format: yaml
+
   Apple:
     path: "./rule_provider/Apple.yaml"
     url: https://rule.kelee.one/Clash/Apple.yaml
@@ -165,6 +180,7 @@ rule-providers:
     behavior: classical
     interval: 3600
     format: yaml
+
   LAN:
     path: "./rule_provider/Lan.yaml"
     url: https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml
@@ -172,6 +188,7 @@ rule-providers:
     behavior: classical
     interval: 3600
     format: yaml
+
 rules:
 - RULE-SET, Emby, Emby
 - RULE-SET, Netflix, Netflix
@@ -179,11 +196,3 @@ rules:
 - RULE-SET, LAN, DIRECT
 - GEOIP, CN, DIRECT
 - MATCH, 全球手动选择
-secret: lZcNSZXT
-bind-address: "*"
-external-ui: "/usr/share/openclash/ui"
-external-ui-name: metacubexd
-keep-alive-interval: 15
-keep-alive-idle: 600
-authentication:
-- Clash:VAcnohp3
