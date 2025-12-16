@@ -160,6 +160,7 @@ rules:
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  RuleProviders: &RuleProviders {type: http, behavior: classical, interval: 3600, format: yaml, proxy: DIRECT}
 rule-providers:
   private_domain:
     <<: *domain
@@ -168,10 +169,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
   Apple:
-    <<: *domain
+    <<: *RuleProviders
     url: "https://rule.kelee.one/Clash/Apple.yaml"
   Emby:
-    <<: *domain
+    <<: *RuleProviders
     url: "https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml"
   netflix_domain:
     <<: *domain
