@@ -150,6 +150,7 @@ rules:
   - RULE-SET,netflix_domain,Netflix
   - RULE-SET,cn_domain,直连
   - RULE-SET,geolocation-!cn,全球手动选择
+  - RULE-SET,Apple,直连
   - RULE-SET,Emby,Emby
   - RULE-SET,netflix_ip,Netflix
   - RULE-SET,cn_ip,直连
@@ -166,6 +167,9 @@ rule-providers:
   cn_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+  Apple:
+    <<: *domain
+    url: "https://rule.kelee.one/Clash/Apple.yaml"
   Emby:
     <<: *domain
     url: "https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml"
