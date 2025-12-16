@@ -1,40 +1,59 @@
-# url 里填写自己的订阅,名称不能重复
+# [订阅节点]
 proxy-providers:
-  provider1:
-    url: ""
+  Corn Group:
+    url: https://www.corninhi.com/s/84tn4684vat2
     type: http
     interval: 86400
-    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
     override:
-      additional-prefix: "[provider1]"
+      additional-prefix: "[Corn Group]"
+    path: "./proxy_provider/Corn Group"
 
-  provider2:
-    url: ""
+  微斯人，吾谁与归:
+    url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=ef8d92d1a6cbfeacec50ab80a85a7843
     type: http
     interval: 86400
-    health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
     override:
-      additional-prefix: "[provider2]"
+      additional-prefix: "[微斯人，吾谁与归]"
+    path: "./proxy_provider/微斯人，吾谁与归"
 
 proxies: 
   - name: "直连"
     type: direct
     udp: true
 
-mixed-port: 7890
-ipv6: false
-allow-lan: true
-unified-delay: false
-tcp-concurrent: true
-external-controller: 127.0.0.1:9090
+# [端口设置]
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7894
 
+# [通用设置]
+external-controller: 0.0.0.0:9090
+geodata-loader: standard
+unified-delay: true
+allow-lan: true
+ipv6: true
+mode: rule
+log-level: info
+tcp-concurrent: true
 find-process-mode: strict
 global-client-fingerprint: chrome
 
+# [缓存设置]
 profile:
   store-selected: true
   store-fake-ip: true
 
+# [嗅探设置]
 sniffer:
   enable: true
   sniff:
@@ -49,6 +68,7 @@ sniffer:
     - "Mijia Cloud"
     - "+.push.apple.com"
 
+# [TUN设置]
 tun:
   enable: true
   stack: mixed
@@ -59,6 +79,7 @@ tun:
   auto-redirect: true
   auto-detect-interface: true
 
+# [DNS设置]
 dns:
   enable: true
   ipv6: false
@@ -75,42 +96,58 @@ dns:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 
+# [策略组]
 proxy-groups:
-
   - name: 全球手动选择
     type: select
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
     proxies: [香港,日本,美国,新加坡]
 
+  - name: Emby
+    type: select
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
+    proxies: [香港,日本,美国,新加坡]
+  
   - name: NETFLIX
     type: select
     proxies: [香港,日本,美国,新加坡]
-
-  #分隔,下面是地区分组
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
+  
   - name: 香港
     type: select
     include-all: true
     exclude-type: direct
     filter: "(?i)港|hk|hong kong"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 
   - name: 日本
     type: select
     include-all: true
     exclude-type: direct
     filter: "(?i)日|jp|japan"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
 
   - name: 美国
     type: select
     include-all: true
     exclude-type: direct
     filter: "(?i)美|us|united states"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
   - name: 新加坡
     type: select
     include-all: true
     exclude-type: direct
     filter: "(?i)新|sg|singapore"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
+# [本地规则]
 rules:
+  - DOMAIN,hxd.as174.de,Emby
+  - DOMAIN,emby.as174.de,Emby
+  - DOMAIN,ask.ash.yt,Emby
+  - DOMAIN,tv.ash.yt,Emby
+  
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,netflix_domain,NETFLIX
   - RULE-SET,cn_domain,直连
@@ -118,8 +155,9 @@ rules:
 
   - RULE-SET,netflix_ip,NETFLIX
   - RULE-SET,cn_ip,直连
-  - MATCH,全球手动选择
+  - MATCH,全球手动选择  
 
+# [远程规则]
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
