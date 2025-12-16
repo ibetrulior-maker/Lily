@@ -105,12 +105,6 @@ dns:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 
-# [策略组参数]
-UrlTest: &UrlTest {type: url-test, interval: 6, tolerance: 20, lazy: true, url: 'http://www.google.com/blank.html', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
-FallBack: &FallBack {type: fallback, interval: 6, lazy: true, url: 'http://www.google.com/blank.html', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
-LoadBalance: &LoadBalance {type: load-balance, interval: 6, lazy: true, url: 'http://www.google.com/blank.html', disable-udp: false, strategy: consistent-hashing, timeout: 2000, max-failed-times: 3, hidden: true, include-all-providers: true}
-RuleProviders: &RuleProviders {type: http, behavior: classical, interval: 3600, format: yaml, proxy: DIRECT}
-
 # [策略组]
 proxy-groups:
   - name: 全球手动选择
@@ -131,28 +125,32 @@ proxy-groups:
   - name: 香港
     type: url-test
     include-all: true
-    exclude-type: direct
+    interval: 300
+    tolerance: 50
     filter: "(?i)港|hk|hong kong"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 
   - name: 日本
     type: url-test
     include-all: true
-    exclude-type: direct
+    interval: 300
+    tolerance: 50
     filter: "(?i)日|jp|japan"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
 
   - name: 美国
     type: url-test
     include-all: true
-    exclude-type: direct
+    interval: 300
+    tolerance: 50
     filter: "(?i)美|us|united states"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
   - name: 新加坡
     type: url-test
     include-all: true
-    exclude-type: direct
+    interval: 300
+    tolerance: 50
     filter: "(?i)新|sg|singapore"
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
