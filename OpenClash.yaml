@@ -181,7 +181,6 @@ rule-providers:
     format: yaml
 
   LAN:
-    <<: *RuleProviders
     path: './rules/Lan.yaml'
     url: 'https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml'
     type: http
