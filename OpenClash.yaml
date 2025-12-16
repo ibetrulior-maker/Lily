@@ -164,7 +164,7 @@ rule-providers:
   Emby:
     <<: *RuleProviders
     path: './rules/Emby.yaml'
-    url: 'https://github.com/ibetrulior-maker/Lily/blob/main/Emby.yaml'
+    url: 'https://raw.githubusercontent.com/ibetrulior-maker/Lily/refs/heads/main/Emby.yaml'
 
   Netflix:
     <<: *RuleProviders
