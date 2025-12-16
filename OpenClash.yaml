@@ -166,6 +166,16 @@ rule-providers:
     path: './rules/Emby.yaml'
     url: 'https://kelee.one/Tool/Clash/Rule/EmbyServer.yaml'
 
+  Netflix:
+    <<: *RuleProviders
+    path: './rules/Netflix.yaml'
+    url: 'https://rule.kelee.one/Clash/Netflix.yaml'
+
+  Apple:
+    <<: *RuleProviders
+    path: './rules/Apple.yaml'
+    url: 'https://rule.kelee.one/Clash/Apple.yaml'
+  
   ESET_China:
     <<: *RuleProviders
     path: './rules/ESET_China.yaml'
@@ -179,6 +189,7 @@ rules:
   - RULE-SET, ChinaDownloadCDN, DIRECT
   - RULE-SET, Netflix, Netflix
   - RULE-SET, Emby, Emby
+  - RULE-SET, Apple, DIRECT
   - RULE-SET, ESET_China, DIRECT
   - GEOIP, CN, DIRECT
   - MATCH, 全球手动选择
