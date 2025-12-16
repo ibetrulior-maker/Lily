@@ -10,7 +10,7 @@ proxy-providers:
       interval: 300
     override:
       additional-prefix: "[Corn Group]"
-    path: "./proxy_provider/Corn Group"
+      path: "./proxy_provider/Corn Group"
 
   微斯人，吾谁与归:
     url: https://ashe79d4ui57uxa26luw.ivvocl.cn/tlralg/oahrettss/ecywtwcaaasr?token=ef8d92d1a6cbfeacec50ab80a85a7843
@@ -22,69 +22,26 @@ proxy-providers:
       interval: 300
     override:
       additional-prefix: "[微斯人，吾谁与归]"
-    path: "./proxy_provider/微斯人，吾谁与归"
-
-proxies: 
-  - name: "直连"
-    type: direct
-    udp: true
+      path: "./proxy_provider/微斯人，吾谁与归"
 
 # [端口设置]
 port: 7890
 socks-port: 7891
 redir-port: 7892
 mixed-port: 7893
-tproxy-port: 7895
+tproxy-port: 7894
 
 # [通用设置]
 external-controller: 0.0.0.0:9090
 geodata-loader: standard
 unified-delay: true
 allow-lan: true
-ipv6: false
+ipv6: true
 mode: rule
 log-level: info
 tcp-concurrent: true
 find-process-mode: strict
 global-client-fingerprint: chrome
-
-# [GEO设置]
-geodata-mode: false
-geo-auto-update: true
-geo-update-interval: 24
-geox-url:
-  geoip: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geoip.dat
-  geosite: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/geosite.dat
-  mmdb: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/country.mmdb
-  asn: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/release/GeoLite2-ASN.mmdb
-
-# [DNS设置]
-dns:
-  enable: true
-  ipv6: false
-  prefer-h3: false
-  listen: 0.0.0.0:1053
-  default-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  nameserver:
-  - https://doh.pub/dns-query
-  - https://dns.alidns.com/dns-query
-  fake-ip-filter:
-  - "*.lan"
-  - "+.local"
-  - "+.market.xiaomi.com"
-  fake-ip-range: 198.18.0.1/16
-  enhanced-mode: fake-ip
-
-# [TUN设置]
-tun:
-  enable: true
-  stack: mixed
-  dns-hijack:
-  - 127.0.0.1:53
-  auto-route: true
-  auto-detect-interface: true
 
 # [缓存设置]
 profile:
@@ -99,103 +56,129 @@ sniffer:
   override-destination: true
   sniff:
     HTTP:
-      ports:
-      - 80
-      - 8080-8880
+      ports: [80, 8080-8880]
       override-destination: true
     TLS:
-      ports:
-      - 443
-      - 8443
+      ports: [443, 8443]
     QUIC:
-      ports:
-      - 443
-      - 8443
+      ports: [443, 8443]
   skip-domain:
-  - Mijia Cloud
-  - "+.push.apple.com"
+    - "Mijia Cloud"
+    - "+.push.apple.com"
+
+# [TUN设置]
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+# [DNS设置]
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+    - "+.market.xiaomi.com"
+  default-nameserver:
+    - tls://223.5.5.5
+    - tls://223.6.6.6
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
 
 # [策略组]
 proxy-groups:
-- name: 全球手动选择
-  type: select
-  icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
-  proxies:
-  - 香港
-  - 日本
-  - 美国
-  - 新加坡
+  - name: 全球手动选择
+    type: select
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
+    proxies: [香港,日本,美国,新加坡]
+
+  - name: Emby
+    type: select
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
+    proxies: [香港,日本,美国,新加坡]
   
-- name: Emby
-  type: select
-  icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Emby.png
-  proxies:
-  - 香港
-  - 日本
-  - 美国
-  - 新加坡
+  - name: NETFLIX
+    type: select
+    proxies: [香港,日本,美国,新加坡]
+    icon: https://raw.githubusercontent.com/Koolson/Qure/refs/heads/master/IconSet/Color/Netflix.png
+  
+  - name: 香港
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)港|hk|hong kong"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
 
-- name: 香港
-  type: url-test
-  include-all: true
-  exclude-type: direct
-  filter: "(?i)港|hk|hong kong"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+  - name: 日本
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)日|jp|japan"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
 
-- name: 日本
-  type: url-test
-  include-all: true
-  exclude-type: direct
-  filter: "(?i)日|jp|japan"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+  - name: 美国
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)美|us|united states"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
 
-- name: 美国
-  type: url-test
-  include-all: true
-  exclude-type: direct
-  filter: "(?i)美|us|united states"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-
-- name: 新加坡
-  type: url-test
-  include-all: true
-  exclude-type: direct
-  filter: "(?i)(新|sg|singapore)"
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-
-# [本地规则]
-rules:
-  - DOMAIN,hxd.as174.de,Emby
-  - DOMAIN,emby.as174.de,Emby
-  - DOMAIN,ask.ash.yt,Emby
-  - DOMAIN,tv.ash.yt,Emby
-
-  - RULE-SET,private_ip,直连,no-resolve
-  - RULE-SET,cn_domain,直连
-  - RULE-SET,geolocation-!cn,全球手动选择
-
-  - RULE-SET,cn_ip,直连
-  - MATCH,全球手动选择
+  - name: 新加坡
+    type: select
+    include-all: true
+    exclude-type: direct
+    filter: "(?i)新|sg|singapore"
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
 
 # [远程规则]
-rule-anchor:
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
 rule-providers:
-  private_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
-  cn_domain:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
-  geolocation-!cn:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/geolocation-!cn.mrs"
+  LAN:
+    <<: *RuleProviders
+    path: './rules/Lan.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/LAN_SPLITTER.yaml'
 
-  private_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
-  cn_ip:
-    <<: *ip
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
+  Direct:
+    <<: *RuleProviders
+    path: './rules/Direct.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/Direct.yaml'
 
+  Proxy:
+    <<: *RuleProviders
+    path: './rules/Proxy.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/Proxy.yaml'
+
+  ChinaDownloadCDN:
+    <<: *RuleProviders
+    path: './rules/ChinaDownloadCDN.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/ChinaDownloadCDN.yaml'
+
+  Emby:
+    <<: *RuleProviders
+    path: './rules/Emby.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/EmbyServer.yaml'
+
+  ESET_China:
+    <<: *RuleProviders
+    path: './rules/ESET_China.yaml'
+    url: 'https://kelee.one/Tool/Clash/Rule/ESET_China.yaml'
+
+# [规则指向]
+rules:
+  - RULE-SET, LAN, DIRECT
+  - RULE-SET, Direct, DIRECT
+  - RULE-SET, Proxy, 全球手动选择
+  - RULE-SET, ChinaDownloadCDN, DIRECT
+  - RULE-SET, Netflix, Netflix
+  - RULE-SET, Emby, Emby
+  - RULE-SET, ESET_China, DIRECT
+  - GEOIP, CN, DIRECT
+  - MATCH, 全球手动选择
