@@ -164,7 +164,7 @@ rule-providers:
   Emby:
     <<: *RuleProviders
     path: './rules/Emby.yaml'
-    url: 'https://kelee.one/Tool/Clash/Rule/EmbyServer.yaml'
+    url: 'https://github.com/ibetrulior-maker/Lily/blob/main/Emby.yaml'
 
   Netflix:
     <<: *RuleProviders
@@ -187,8 +187,8 @@ rules:
   - RULE-SET, Direct, DIRECT
   - RULE-SET, Proxy, 全球手动选择
   - RULE-SET, ChinaDownloadCDN, DIRECT
-  - RULE-SET, Netflix, Netflix
   - RULE-SET, Emby, Emby
+  - RULE-SET, Netflix, Netflix
   - RULE-SET, Apple, DIRECT
   - RULE-SET, ESET_China, DIRECT
   - GEOIP, CN, DIRECT
